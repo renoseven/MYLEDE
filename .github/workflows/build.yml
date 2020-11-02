@@ -22,6 +22,10 @@ on:
         description: 'Repo branch / tag'
         required: true
         default: 'master'
+      config_file:
+        description: 'Target config file'
+        required: true
+        default: '.config'
       ssh:
         description: 'SSH connection to Actions'
         required: false
@@ -33,7 +37,7 @@ env:
   REPO_URL: github.event.inputs.repo_url
   REPO_BRANCH: github.event.inputs.repo_branch
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config
+  CONFIG_FILE: github.event.inputs.config_file
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
