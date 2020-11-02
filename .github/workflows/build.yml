@@ -14,6 +14,14 @@ on:
   repository_dispatch:
   workflow_dispatch:
     inputs:
+      repo_url:
+        description: 'Repo url'
+        required: true
+        default: 'https://github.com/coolsnowwolf/lede'
+      repo_branch:
+        description: 'Repo branch / tag'
+        required: true
+        default: 'master'
       ssh:
         description: 'SSH connection to Actions'
         required: false
@@ -22,8 +30,8 @@ on:
 #    - cron: 0 8 * * 5
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
+  REPO_URL: github.event.inputs.repo_url
+  REPO_BRANCH: github.event.inputs.repo_branch
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
